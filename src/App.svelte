@@ -1,30 +1,58 @@
 <script>
-	export let name;
+    let newItem = '';
+
+	
+    let todoList = [{text: 'Write my first post', status: true},
+                    {text: 'Upload the post to the blog', status: false},
+                    {text: 'Publish the post at Facebook', status: false}];
+	
+	function addToList() {
+		todoList = [...todoList, {text: newItem, status: false}];
+		newItem = '';
+	}
+	
+	function removeFromList(index) {
+		todoList.splice(index, 1)
+		todoList = todoList;
+    }
+	
 </script>
+<div class = "flex1">
+<div class = "todo">
+	<input bind:value={newItem} type="text" placeholder="new todo item..">
+<button on:click = {addToList}>
+	Add
+</button>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+	<br/>
+{#each todoList as item, index}
+	<input bind:checked={item.status} type="checkbox">
+	
+	<span class:checked={item.status}>
+		{item.text}
+	</span>
+	
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<span on:click={() => removeFromList(index)}>❌</span>
+	<br/>
+	
+{/each} 
+	
+</div>
+</div>
 
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+<style> 
+	.checked {
+        text-decoration: line-through;
+    }
+.flex1 {
+  display: flex;
+	height: 100vh;
+	justify-content: center;
+  align-items: center;
+	background: #939358;
+}
+.todo {
+	background: #1a3949 ;
+}
+</style> 
