@@ -18,28 +18,50 @@
 	}
 </script>
 
+<div class = "flex_X">
+
+
+</div>
+
 <div class="flex1">
 	<div class="todo">
+		
 		<h1>Список дел</h1>
 		<input bind:value={newItem} type="text" placeholder="new todo item.." />
 
 		<button on:click={addToList}> Add </button>
-
-		<br />
+		
+		
+		
 		{#each todoList as item, index}
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<span on:click={() => removeFromList(index)}>❌</span>
+		<div class = "todos">
+			<div class= "item">
+
+			
+
 			<input bind:checked={item.status} type="checkbox" />
 
-			<span class:checked={item.status}>
+			<div class:checked={item.status}>
 				{item.text}
-			</span>
-			<br />
+			</div>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<div on:click={() => removeFromList(index)}>❌</div>
+		</div>
+	</div>				
 		{/each}
 	</div>
 </div>
 
 <style>
+	.item div:nth-child(2){
+width: 100%;
+	}
+	.item {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		
+	}
 	.checked {
 		text-decoration: line-through;
 	}
@@ -53,5 +75,9 @@
 	.todo {
 		background: #1a3949;
 		color: whitesmoke;
+	}
+	.todos {
+		display: flex;
+		flex-direction: column;
 	}
 </style>
