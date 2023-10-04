@@ -69,7 +69,8 @@ width: 100%;
 		justify-content: center;
 		align-items: center;
 		background: #939358;
-
+		padding: 4em ;
+		margin: 4em;
 	}
 	.todo {
 		background: #1a3949;
