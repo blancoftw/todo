@@ -37,15 +37,13 @@
 		<div class = "todos">
 			<div class= "item">
 
-			
-
 			<input bind:checked={item.status} type="checkbox" />
 
 			<div class:checked={item.status}>
 				{item.text}
 			</div>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div on:click={() => removeFromList(index)}>❌</div>
+			<div class ="del" on:click={() => removeFromList(index)}>&times;</div>
 		</div>
 	</div>				
 		{/each}
@@ -71,6 +69,7 @@ width: 100%;
 		justify-content: center;
 		align-items: center;
 		background: #939358;
+
 	}
 	.todo {
 		background: #1a3949;
@@ -79,5 +78,9 @@ width: 100%;
 	.todos {
 		display: flex;
 		flex-direction: column;
+	}
+	.del {
+		font-size: 1.7em;
+		color: lawngreen;
 	}
 </style>
