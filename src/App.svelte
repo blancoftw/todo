@@ -52,7 +52,10 @@
 
 <style>
 	.item div:nth-child(2){
-width: 100%;
+width: 10em ;
+display: flex;
+flex-direction: row;
+align-items: center;
 	}
 	.item {
 		display: flex;
@@ -68,17 +71,21 @@ width: 100%;
 		height: 100vh;
 		justify-content: center;
 		align-items: center;
-		background: #939358;
+		background: #183544;
 		padding: 4em ;
 		margin: 4em;
 	}
 	.todo {
-		background: #1a3949;
+		display: flex;
+		flex-direction: column;
+		background: #49778f;
 		color: whitesmoke;
+		padding: 2em ;
 	}
 	.todos {
 		display: flex;
 		flex-direction: column;
+
 	}
 	.del {
 		font-size: 1.7em;
